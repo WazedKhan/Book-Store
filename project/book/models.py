@@ -1,4 +1,5 @@
 from author.models import Author
+from publisher.models import Publisher
 
 from django.db import models
 
