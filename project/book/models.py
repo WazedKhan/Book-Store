@@ -15,3 +15,26 @@ class Book(models.Model):
 
     def __str__(self):
         return f"{self.id}: {self.name} | Authors: {self.author.name}"
+
+
+class Stock(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    in_stock = models.BooleanField(default=False)
+    last_updated = models.DateTimeField(auto_now=True)
+    location = models.CharField(max_length=255, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.quantity > 0:
+            self.in_stock = True
+        else:
+            self.in_stock = False
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.book.name} - Stock: {self.quantity}"
+
+
+    @classmethod
+    def get_all_in_stock(cls):
+        return cls.objects.filter(in_stock=True)
