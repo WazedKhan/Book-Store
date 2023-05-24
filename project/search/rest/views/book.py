@@ -1,6 +1,6 @@
 from django.db.models import Count, Q
 
-from django_filters.rest_framework import DjangoFilterBackend
+from django_filters.rest_framework import DjangoFilterBackend  # pylint:ignore
 from rest_framework.generics import ListAPIView
 
 from ..serializers import book
