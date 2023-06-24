@@ -29,6 +29,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://wazedkhan-shiny-chainsaw-646w6v79g972rwrv-8000.preview.app.github.dev",
+    "http://127.0.0.1:8000/"
+]
 
 # Application definition
 
